@@ -8,13 +8,12 @@ import {
 } from "../controllers/user.controller.js"
 
 import authMiddleware from "../middleware/auth.middleware.js"
-import adminMiddleware from "../middleware/admin.middleware.js"
 
 let router = express.Router()
 
 router.post("/register", registerUser)
 router.post("/login", loginUser)
-router.get("/", authMiddleware, adminMiddleware, allUsers)
+router.get("/", authMiddleware, allUsers)
 router.get("/:id", authMiddleware, getUserById)
 
 export default router

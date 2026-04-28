@@ -9,14 +9,13 @@ import {
 } from "../controllers/order.controller.js"
 
 import authMiddleware from "../middleware/auth.middleware.js"
-import adminMiddleware from "../middleware/admin.middleware.js"
 
 let router = express.Router()
 
 router.post("/", authMiddleware, placeOrder)
 router.get("/my", authMiddleware, myOrders)
-router.get("/", authMiddleware, adminMiddleware, allOrders)
-router.put("/:id", authMiddleware, adminMiddleware, updateOrderStatus)
+router.get("/", authMiddleware, allOrders)
+router.put("/:id", authMiddleware, updateOrderStatus)
 router.put("/:id/cancel", authMiddleware, cancelOrder)
 
 export default router
